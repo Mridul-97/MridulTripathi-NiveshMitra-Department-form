@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Form</title>
+    <style>
+        /*custom font*/
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+        :root {
+            --primary-color: #63a2cb;
+            --secondary-color: #67d5bf;
+        }
+
+        /*basic reset*/
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+
+        html {
+            height: 100%;
+            background: #fff;
+        }       
+    
+        #msform fieldset:not(:first-of-type) {
+            display: none;
+        }
+     
+        #msform input, #msform textarea {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            color: #2C3E50;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        #msform textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        /*buttons*/
+        #msform .action-button {
+            width: 100px;
+            background: var(--secondary-color);
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 1px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        #msform .action-button:hover, #msform .action-button:focus {
+            box-shadow: 0 0 0 2px white, 0 0 0 3px var(--secondary-color);
+        }
+        /*headings*/
+        .fs-title {
+            font-size: 16px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .fs-subtitle {
+            font-weight: normal;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        /*progressbar*/
+        #progressbar {
+            margin-bottom: 30px;
+            overflow: hidden;
+            padding-left: 0;
+            /*CSS counters to number the steps*/
+            counter-reset: step;
+        }
+        #progressbar li {
+            list-style-type: none;
+            color: white;
+            text-transform: uppercase;
+            font-size: 9px;
+            width: 33.33%;
+            float: left;
+            position: relative;
+            text-align: center;
+        }
+        #progressbar li:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 20px;
+            line-height: 20px;
+            display: block;
+            font-size: 10px;
+            color: #333;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 5px auto;
+        }
+        /*progressbar connectors*/
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: white;
+            position: absolute;
+            left: -50%;
+            top: 9px;
+            z-index: -1; /*put it behind the numbers*/
+        }
+        #progressbar li:first-child:after {
+            /*connector not needed before the first step*/
+            content: none; 
+        }
+        /*marking active/completed steps green*/
+        /*The number of the step and the connector before it = green*/
+        #progressbar li.active:before, #progressbar li.active:after {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .help-block {
+            font-size: .8em;
+            color: #7c7c7c;
+            text-align: left;
+            margin-bottom: .5em;
+        }
+
+        /* Animation styles */
+        #msform fieldset {
+            position: absolute;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease-in-out;
+        }
+        #msform fieldset.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <!-- multistep form -->
+    <form id="msform">
+        <!-- progressbar -->
+        <ul id="progressbar">
+            <li class="active">Step 1</li>
+            <li>Step 2</li>
+            <li>Step 3</li>
+        </ul>
+        <!-- fieldsets -->
+        <fieldset class="active">
+            <h2 class="fs-title">Project Details</h2>
+            <h3 class="fs-subtitle">What do you consider your main strengths to be?</h3>
+            <textarea class="form-control" name="CAT_Custom_1" id="CAT_Custom_1" rows="4" onkeydown="if(this.value.length>=4000)this.value=this.value.substring(0,3999);"></textarea>
+            <input type="button" name="next" class="next action-button" value="Next" />
+        </fieldset>
+        <fieldset>
+            <h2 class="fs-title">Question 2</h2>
+            <h3 class="fs-subtitle">What do your colleagues consider your main strengths to be?</h3>
+            <textarea class="form-control" name="CAT_Custom_2" id="CAT_Custom_2" rows="4" onkeydown="if(this.value.length>=4000)this.value=this.value.substring(0,3999);"></textarea>
+            <input type="button" name="previous" class="previous action-button" value="Previous" />
+            <input type="button" name="next" class="next action-button" value="Next" />
+        </fieldset>
+        <fieldset>
+            <h2 class="fs-title">Question 3</h2>
+            <h3 class="fs-subtitle">What have been your main achievements?</h3>
+            <textarea class="form-control" name="CAT_Custom_3" id="CAT_Custom_3" rows="4" onkeydown="if(this.value.length>=4000)this.value=this.value.substring(0,3999);"></textarea>
+            <input type="button" name="previous" class="previous action-button" value="Previous" />
+            <input type="submit" name="submit" class="submit action-button" value="Submit" />
+        </fieldset>
+    </form>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- jQuery easing plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    
+    <script>
+    //jQuery time
+    $(document).ready(function() {
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var animating; //flag to prevent quick multi-click glitches
+        
+        // Initialize first fieldset as active
+        $("fieldset").first().addClass("active").show();
+        
+        $(".next").click(function(){
+            if(animating) return false;
+            animating = true;
+            
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+            
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+            
+            //show the next fieldset
+            current_fs.removeClass("active");
+            next_fs.addClass("active").show();
+            
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                step: function(now, mx) {
+                    //as the opacity of current_fs reduces to 0 - stored in "now"
+                    //1. scale current_fs down to 80%
+                    scale = 1 - (1 - now) * 0.2;
+                    //2. bring next_fs from the right(50%)
+                    left = (now * 50)+"%";
+                    //3. increase opacity of next_fs to 1 as it moves in
+                    opacity = 1 - now;
+                    current_fs.css({'transform': 'scale('+scale+')'});
+                    next_fs.css({'left': left, 'opacity': opacity});
+                }, 
+                duration: 500, 
+                complete: function(){
+                    current_fs.hide();
+                    animating = false;
+                }, 
+                //this comes from the custom easing plugin
+                easing: 'easeOutBack'
+            });
+        });
+        
+        $(".previous").click(function(){
+            if(animating) return false;
+            animating = true;
+            
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+            
+            //de-activate current step on progressbar
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+            
+            //show the previous fieldset
+            current_fs.removeClass("active");
+            previous_fs.addClass("active").show();
+            
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                step: function(now, mx) {
+                    //as the opacity of current_fs reduces to 0 - stored in "now"
+                    //1. scale previous_fs from 80% to 100%
+                    scale = 0.8 + (1 - now) * 0.2;
+                    //2. take current_fs to the right(50%) - from 0%
+                    left = ((1-now) * 50)+"%";
+                    //3. increase opacity of previous_fs to 1 as it moves in
+                    opacity = 1 - now;
+                    current_fs.css({'left': left});
+                    previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+                }, 
+                duration: 500, 
+                complete: function(){
+                    current_fs.hide();
+                    animating = false;
+                }, 
+                //this comes from the custom easing plugin
+                easing: 'easeOutBack'
+            });
+        });
+        
+        $(".submit").click(function(){
+            // You can add form validation here before submission
+            alert("Form submitted!");
+            return true;
+        });
+    });
+    </script>
+</body>
+</html>

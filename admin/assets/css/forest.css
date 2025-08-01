@@ -1,0 +1,194 @@
+.card_header{
+       background: #0061aa;
+       color: #fff;
+}
+.fnt_r_14{
+    font-size: 14px;
+}
+.button-group button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+}
+.btn {
+    width: 120px;
+    height: 40px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: transform 80ms ease-in;
+        padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+            width: 120px !important;
+    height: 40px;
+    color: #fff;
+}
+
+.btn-info {
+    background: #0061aa;
+    border: #0061aa;
+        width: 120px;
+    height: 40px;
+    color: #fff;
+}
+.btn-primary{
+  border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+      border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+
+  
+}
+.btn-primary:hover{
+  border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+        width: 120px;
+    height: 40px;
+    color: #fff;
+ 
+}
+ 
+.btn-clear:hover{
+    background-color: #7f3a98;
+    border: 1px solid #7f3a98;
+}
+.btn-clear{
+    background-color: #7f3a98;
+    border: 1px solid #7f3a98;
+}
+.btn-clear{
+    background-color: #7f3a98;
+    border: 1px solid #7f3a98;
+}
+.btn-success{
+  background-image: -webkit-linear-gradient(0deg, #a1c4fd 0%, #884d80 0%, #2b5876 0%, #4e4376 100%) !important;
+} 
+  
+ .form-label {
+      font-weight: 500;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .required:after {
+      content: " *";
+      color: red;
+    }
+    .form-inline .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .form-inline label {
+      margin-right: 10px;
+      min-width: 240px;
+    }
+    .form-inline select, .form-inline input {
+      width: 200px;
+    }
+    select {
+    background: url("../assets/images/down.png");
+    background-size: 6%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+   .review-block {
+    background: url(assets/images/bg/17.jpg);
+    background-position: top;
+    background-size: contain;
+}
+    input.form-control, .form-control {
+    line-height: 21px !important;
+    padding: 0px 10px !important;
+    margin: 0px !important;
+    width: 100%;
+    height: 36px !important;
+}
+    input.checkbox {
+    width: 14%;
+}
+    .form-check.form-check-inline {
+    display: flex;
+    font-size: 16px;
+    text-align: left;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+    .pcoded-wrapper.container-fluid {
+    background: #fff;
+}
+    .content.clearfix {
+    width: 100% !important;
+    height: auto !important;
+}
+.steps ul:after {
+    width: 87% !important;
+    top: 58px !important;
+}
+.form-group.row {
+    padding-bottom: 0px !important;
+}
+.col-form-label {
+    font-size: 16px !important;
+    font-family: system-ui;
+    line-height: 21px !important;
+    font-weight: 500;
+}
+.title-text {
+    font-size: 16px !important;
+}
+h2 {
+    font-size: 26px !important;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-family: system-ui;
+    color: #464776;
+}
+    .file-input-button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .file-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .upload-button {
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .upload-button:hover, .file-input-button:hover {
+            opacity: 0.8;
+        }
+        
+        .file-name {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #555;
+        }
